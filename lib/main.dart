@@ -66,49 +66,57 @@ class _HomeState extends State<Home> {
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              widget(
-                children: <Widget>[
-                  Icon(Icons.person, size: 120, color: Colors.orange),
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      labelText: "Sua altura (cm)",
-                      labelStyle: TextStyle(color: Colors.orangeAccent),
-                    ),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.orange, fontSize: 25.0),
-                    controller: alturaController,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Insira sua altura aqui.";
-                      }
-                    },
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      labelText: "Seu peso (kg)"
-                      labelStyle: TextStyle(
-                        color: Colors.orangeAccent,
-                        fontSize: 25.0,
-                      ),
-                    ),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 25.0                  
-                    ),
-                    controller: pesoController,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Insira seu peso aqui.";
-                      }
-                    },
-                  ),
-                  Padding(padding: EdgeInsets.only(top: ))
-                ],
+            children: <Widget>[
+              Icon(Icons.person, size: 120, color: Colors.orange),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Sua altura (cm)",
+                  labelStyle: TextStyle(color: Colors.orangeAccent),
+                ),
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.orange, fontSize: 25.0),
+                controller: alturaController,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Insira sua altura aqui.";
+                  }
+                },
               ),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Seu peso (kg)",
+                  labelStyle:
+                      TextStyle(color: Colors.orangeAccent, fontSize: 25.0),
+                ),
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.orange, fontSize: 25.0),
+                controller: pesoController,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Insira seu peso aqui.";
+                  }
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child: ButtonTheme(
+                    height: 50.0,
+                    highlightColor: Colors.brown,
+                    child: RaisedButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          _calcular();
+                        }
+                      },
+                      child: Text(
+                        "Calcular",
+                        style: TextStyle(color: Colors.white, fontSize: 25.0),
+                      ),
+                      color: Colors.orange,
+                    )),
+              )
             ],
           ),
         ),
