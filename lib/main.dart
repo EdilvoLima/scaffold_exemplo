@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
   void _calcular() {
     setState(() {
       double peso = double.parse(pesoController.text);
-      double altura = double.parse(alturaController.text);
+      double altura = double.parse(alturaController.text) / 100;
       double imc = peso / (altura * altura);
 
       if (imc < 18.6) {
@@ -116,7 +116,12 @@ class _HomeState extends State<Home> {
                       ),
                       color: Colors.orange,
                     )),
-              )
+              ),
+              Text(
+                _textInfo,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.orange, fontSize: 25.0),
+              ),
             ],
           ),
         ),
